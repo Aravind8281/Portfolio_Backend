@@ -15,7 +15,9 @@ mongoose.connect('mongodb+srv://mongo:mongo@av.vynrd2r.mongodb.net/que', {
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', (error) => {
+  console.error('MongoDB connection error:', error);
+});
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
